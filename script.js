@@ -1,5 +1,5 @@
-var minutes,seconds,fractionsOfSecond;
-var startTimestamp = 0;
+var minutes = 0,seconds = 0,fractionsOfSecond = 0;
+var startTimestamp = 0,intervalID = null;
 
 function calculateTime() {
 	var currentTimestamp, differenceInMs;
@@ -14,18 +14,46 @@ function calculateTime() {
 }
 
 function formatZeros(n) {
-	return n.toString().length>2 ? '0'+n : n;
+	var str = n.toString();
+	return str.length<2 ? '0'+str : str;
 }
 
-function displayTime() {
-	calculateTime();
-	displayDiv.innerText=
-		`${formatZeros(minutes)}:${formatZeros(seconds)}:${fractionsOfSecond}`;
+function displayTime(z) {
+	if(!z) {
+		calculateTime();
+		displayDiv.innerText=
+		`${formatZeros(minutes)}:${formatZeros(seconds)}.${fractionsOfSecond}`;
+	} else {
+		displayDiv.innerText=
+		`00:00.0`;
+	}
 }
 
-setInterval(displayTime,100);
+function startBtnHandler() {
+	if(intervalID===null) {
+		intervalID=setInterval(displayTime,100);
+	}
+}
+
+function stopBtnHandler() {
+	clearInterval(intervalID);
+	intervalID=null;
+}
+
+function resetBtnHandler() {
+	startTimestamp=0;
+	displayTime(true);
+}
+
+//setInterval(displayTime,100);
 
 var displayDiv = document.querySelector('#timerInner');
 var startBtn = document.querySelector('#startBtn');
 var resetBtn = document.querySelector('#resetBtn');
 var stopBtn = document.querySelector('#stopBtn');
+
+startBtn.addEventListener('click',startBtnHandler);
+stopBtn.addEventListener('click',stopBtnHandler);
+resetBtn.addEventListener('click',resetBtnHandler);
+
+//displayTime();
