@@ -24,11 +24,11 @@ function formatZeros(n) {
 function displayTime(z) {
 	if(!z) {
 		calculateTime();
-		displayDiv.innerText=
-		`${formatZeros(minutes)}:${formatZeros(seconds)}.${fractionsOfSecond}`;
+		displayDiv.innerHTML=
+		`${formatZeros(minutes)}:${formatZeros(seconds)}<span class="fr">.${fractionsOfSecond}</span>`;
 	} else {
-		displayDiv.innerText=
-		`00:00.0`;
+		displayDiv.innerHTML=
+		`00:00<span class="fr">.0</span>`;
 	}
 }
 
