@@ -1,10 +1,13 @@
-var minutes = 0,seconds = 0,fractionsOfSecond = 0;
-var startTimestamp = 0,intervalID = null;
+var minutes = 0,seconds = 0,fractionsOfSecond = 0, differenceInMs;
+var startTimestamp = 0,intervalID = null, paused = false;
 
 function calculateTime() {
-	var currentTimestamp, differenceInMs;
+	var currentTimestamp;
 	if(startTimestamp==0) {
 		startTimestamp=Date.now();
+	} else if(paused) {
+		paused=false;
+		startTimestamp=Date.now()-differenceInMs-100;
 	}
 	currentTimestamp=Date.now();
 	differenceInMs=currentTimestamp-startTimestamp;
@@ -38,10 +41,12 @@ function startBtnHandler() {
 function stopBtnHandler() {
 	clearInterval(intervalID);
 	intervalID=null;
+	paused=true;
 }
 
 function resetBtnHandler() {
 	startTimestamp=0;
+	differenceInMs=0;
 	displayTime(true);
 }
 
@@ -56,4 +61,4 @@ startBtn.addEventListener('click',startBtnHandler);
 stopBtn.addEventListener('click',stopBtnHandler);
 resetBtn.addEventListener('click',resetBtnHandler);
 
-//displayTime();
+displayTime(true);
