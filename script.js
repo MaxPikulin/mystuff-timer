@@ -24,11 +24,11 @@ function formatZeros(n) {
 function displayTime(z) {
 	if(!z) {
 		calculateTime();
-		displayDiv.innerHTML=
-		`${formatZeros(minutes)}:${formatZeros(seconds)}<span class="fr">.${fractionsOfSecond}</span>`;
+		displayDiv.innerText=`${formatZeros(minutes)}:${formatZeros(seconds)}`;
+		displayFr.textContent=`.${fractionsOfSecond}`;
 	} else {
-		displayDiv.innerHTML=
-		`00:00<span class="fr">.0</span>`;
+		displayDiv.innerText=`00:00`;
+		displayFr.textContent=`.0`;
 	}
 }
 
@@ -56,6 +56,7 @@ var displayDiv = document.querySelector('#timerInner');
 var startBtn = document.querySelector('#startBtn');
 var resetBtn = document.querySelector('#resetBtn');
 var stopBtn = document.querySelector('#stopBtn');
+var displayFr = document.querySelector('#fr');
 
 startBtn.addEventListener('click',startBtnHandler);
 stopBtn.addEventListener('click',stopBtnHandler);
