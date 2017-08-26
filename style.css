@@ -1,32 +1,33 @@
 * {
-	margin: 0px;
-	padding: 0px;
+    margin: 0px;
+    padding: 0px;
 }
 
 #timerOuter {
-	border: 1px solid red;
-	width: 200px;
-	height: 120px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding-bottom: 5px;
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%,-50%);
+    border: 1px solid red;
+    width: 200px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 5px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
 }
 
 #timer {
-	
-	border-bottom: 1px solid green;
-	flex: 1;
-	font-size: 50px;
-	text-align: center;
-	margin-bottom: 5px;
+
+    border-bottom: 1px solid green;
+    flex: 1;
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 5px;
 }
 
 #fr {
-	font-size: 20px;
-	color: gray;
+    font-size: 20px;
+    color: gray;
 }
